@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		fieldset {
+			background: lightyellow; 
+			border: 10px solid yellow; 
+			margin-bottom: 10px;
+			width: 720px;
+		}
+		label {
+			display: inline-block;
+			width: 180px;
+			text-align: right;
+			vertical-align: top;
+		}
+		input[type=radio] {
+			width: auto;
+		}
+		input[type=checkbox] {
+			width: auto;
+		}
+		span.lowSlider {
+			display: inline-block;
+			width: 40px;
+			background: brown;
+			vertical-align: top;
+			color: white;
+			text-align: center;
+		}
+		span.highSlider {
+			display: inline-block;
+			width: 40px;
+			background: blueviolet;
+			vertical-align: top;
+			color: white;
+			text-align: center;
+		}
+		textarea {
+			width: 360px;
+			height: 50px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Please Enter Your Details For Our Dating Website!</h1>
+	<form action="https://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php" method="post" enctype="multipart/form-data">
+		<fieldset>
+			<legend>Your Face</legend>
+			<label for="image">Your image:</label>
+			<input type="file" id="image" name="image" required>
+			<br>
+
+			<label for="preview">Image preview:</label>
+			<img id="preview" name="preview">
+		</fieldset>
+		<fieldset>
+			<legend>Your General Details</legend>
+			<label for="name">Name:</label>
+			<input type="text" id="name" name="name" required>
+			<br>
+
+			<label for="gender">Gender:</label>
+			<input type="radio" id="gender" name="gender" value="male" required>Male
+			<input type="radio" id="gender" name="gender" value="female" required>Female
+			<br>
+
+			<label for="age">Age:</label>
+			<input type="number" id="age" name="age" required min="0" max="125">
+			<br>
+
+			<label for="dob">Date of birth:</label>
+			<input type="date" id="dob" name="dob" required>
+			<br>
+
+			<label for="colour">Favorite colour:</label>
+			<input type="color" id="colour" name="colour" required>
+			<br>
+
+			<label for="country">Which country:</label>
+			<select id="country" name="country" required>
+				<option value="" selected diasbled>Please select an option ..</option>
+				<option value="HK">HK</option>
+				<option value="Malaysia">Malaysia</option>
+				<option value="Singapore">Singapore</option>
+				<option value="UK">UK</option>
+				<option value="USA">USA</option>
+			</select>
+		</fieldset>
+		<fieldset>
+			<legend>Your Indicators</legend>
+			<label for="height">Height:</label>
+			<span class="lowSlider">Short</span>
+			<input type="range" id="height" name="height" min="0" max="100">
+			<span class="highSlider">Tall</span>
+			<br>
+
+			<label for="salary">Salary:</label>
+			<span class="lowSlider">Poor</span>
+			<input type="range" id="salary" name="salary" min="0" max="100">
+			<span class="highSlider">Rich</span>
+			<br>
+			
+		</fieldset>
+		<fieldset>
+			<legend>Your Contact Information</legend>
+			<label for="email">Email:</label>
+			<input type="email" id="email" name="email" required>
+			<br>
+
+			<label for="mobile">Mobile:</label>
+			<input type="tel" id="mobile" name="mobile" required>
+			<br>
+
+			<label for="address">Address:</label>
+			<textarea id="address" name="address" rows="5" cols="30" required></textarea>
+			<br>
+
+			<label for="contact">Method to contact you:</label>
+			<input type="checkbox" id="contactEmail" name="contactEmail" value="true">Email
+			<input type="checkbox" id="contactWA" name="contactWA" value="true">Whatsapp
+			<input type="checkbox" id="contactInApp" name="contactInApp" value="true">In-app chat
+		</fieldset>
+		<input type="submit" name="Submit">
+	</form>
+</body>
+</html>

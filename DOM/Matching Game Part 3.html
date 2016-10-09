@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+  <title>Matching Game</title>
+</head>
+<style type="text/css">
+	img {
+		position: absolute;
+	}	
+
+	div	{
+		position: absolute;
+		width: 500px;
+		height: 500px;
+	}
+
+	#rightSide {
+		left: 500px;
+		border-left: 1px solid black
+	}
+</style>
+<body onload="do_game()">
+	<h1>Matching Game</h1>
+	<p>Click on the extra smiling face on the left</p>
+	<div id="leftSide"></div>
+	<div id="rightSide"></div>
+
+	<script> 	
+		// Generate a random number between 1 and range
+		function generateRandomNumber(range)
+		{
+			return Math.floor(Math.random()*range)+1;
+		}
+
+		function generateFaces(numberOfFaces)
+		{
+			var theLeftSide = document.getElementById("leftSide");
+			var theRightSide = document.getElementById("rightSide");
+
+			for (var i = 0; i < numberOfFaces; i++) 
+			{
+				var img = document.createElement("img");
+				img.src = "smile.png";
+				img.height = 100;
+				img.width = 100;
+				img.style.left = generateRandomNumber(theLeftSide.offsetWidth-img.width-1) +"px";
+				img.style.top = generateRandomNumber(theLeftSide.offsetHeight-img.height-1) + "px";
+
+				theLeftSide.appendChild(img);
+			}
+
+			var leftSideImages = theLeftSide.cloneNode(true);
+			leftSideImages.removeChild(leftSideImages.lastChild);
+			theRightSide.appendChild(leftSideImages);
+		}
+
+		// Main entry point for the game
+		function do_game()
+		{
+			var numberOfFaces = 5;
+
+			generateFaces(numberOfFaces);
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+  <title>Colour Guessing Game</title>
+</head>
+<body onload="do_game()">
+	<script> 	
+		var colours = ["aqua", "black", "blue",
+		               "fuchsia", "green", "gray",
+		               "lime", "maroon", "navy",
+		               "olive", "purple", "red",
+		               "silver", "white", "teal", "yellow"];
+
+		var chosenColours = [];
+		var numColours = 5;
+
+		// Generate a random number between 1 and range
+		function generateRandomNumber(range)
+		{
+			return Math.floor(Math.random()*range)+1;
+		}
+
+		// Choose a sorted set of numColour colours
+		// If we have enough colours to choose from, dont allow duplicates
+		function chooseColourSet()
+		{
+			var chosenColour;
+
+			for (var i=0; i<numColours; i++)
+			{
+        		do
+        		{
+        			chosenColour = colours[generateRandomNumber(colours.length)-1];
+        		} while ((chosenColours.indexOf(chosenColour) >= 0) || (numColours > colours.length))
+
+		        chosenColours.push(chosenColour);
+    		}
+
+		    chosenColours.sort();
+		}
+
+		// Check the end user guess
+		function checkGuess(answer, guess, numGuesses)
+		{
+			if (guess == answer)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+
+		// Main entry point for the game
+		function do_game()
+		{
+			var numGuesses = 0;
+			var answer;
+			var guess;
+
+			chooseColourSet();
+			answer = chosenColours[generateRandomNumber(chosenColours.length)-1];
+			alert("BTW the answer is "+answer);
+
+			do
+			{
+				guess = prompt("I am thinking of one of these colours:\n\n"+chosenColours.join(", ")+"\n\nWhat colour am I thinking of?");
+				numGuesses++;
+			} while (!checkGuess(answer, guess, numGuesses));
+		}
+	</script>
+</body>
+</html>
